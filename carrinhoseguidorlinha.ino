@@ -79,6 +79,7 @@ void loop() {
     }
 }
 
-/*TO DO: 
+/*TO DO:
+desviar do obstáculo
 voltar ao curso em até 5 segundos
-testes de bugs na linha branca
+testes de bugs na linha branca */
