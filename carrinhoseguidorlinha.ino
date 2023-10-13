@@ -14,9 +14,6 @@ estão conectadas na placa */
 const int motorD =  5;
 const int motorE = 6;
 
-const int dirD = 7;
-const int dirE = 8;
-
 const int Sensor1 = 3;
 const int Sensor2 = 4;
 
@@ -38,9 +35,6 @@ void setup() {
     //Configuração das portas onde estão os motores e os sentidos de rotação
     pinMode(motorD, OUTPUT);
     pinMode(motorE, OUTPUT);
-    pinMode(dirD, OUTPUT);
-    pinMode(dirE, OUTPUT);
-
 }
 
 void loop() {
