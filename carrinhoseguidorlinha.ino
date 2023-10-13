@@ -18,9 +18,10 @@ const int dirD = 7;
 const int dirE = 8;
 
 const int Sensor1 = 3;
-const int valorSensor1 = 0;
 const int Sensor2 = 4;
-const int valorSensor2 = 0;
+
+int valorSensor1 = 0;
+int valorSensor2 = 0;
 
 const int ledVerde = 13;
 const int ledVermelho = 12;
