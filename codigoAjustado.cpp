@@ -80,7 +80,7 @@ else {
   	delay(5000);
   	digitalWrite(motorD, HIGH);
   	digitalWrite(motorE, LOW);
-  	delay(5000);
+  	delay(2000);
     
  }
 }
