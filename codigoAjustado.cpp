@@ -88,8 +88,8 @@ else {
   	Serial.println("Objeto detectado");
   	digitalWrite(ledVerde, LOW);
   	digitalWrite(ledVermelho, HIGH);
-   digitalWrite(motorD, LOW);
-   digitalWrite(motorE, LOW);
+     digitalWrite(motorD, LOW);
+     digitalWrite(motorE, LOW);
   	delay(5000);
   	digitalWrite(motorD, HIGH);
   	digitalWrite(motorE, LOW);
