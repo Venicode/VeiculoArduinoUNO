@@ -59,8 +59,8 @@ void loop() {
 /*Os sensores infravermelhos retornam valores dependendo da luz refletida.
 Se for branco, retorna menos de 900. Se for preto, retorna superior. */
 if (distancia>5){ 
- digitalWrite(ledVerde,HIGH);
- digitalWrite(ledVermelho, LOW);
+   digitalWrite(ledVerde,HIGH);
+   digitalWrite(ledVermelho, LOW);
   
  if ((valorSensor1 > 900) && (valorSensor2 > 900)){
      digitalWrite(motorD, HIGH);
@@ -85,14 +85,14 @@ if (distancia>5){
 /*O if acima verifica se a distância é superior a 5cm. 
 Caso for igual ou inferior, irá executar o comando do else*/
 else {
-   	Serial.println("Objeto detectado");
-   	digitalWrite(ledVerde, LOW);
-   	digitalWrite(ledVermelho, HIGH);
-    digitalWrite(motorD, LOW);
-    digitalWrite(motorE, LOW);
-   	delay(5000);
-   	digitalWrite(motorD, HIGH);
-   	digitalWrite(motorE, LOW);
-   	delay(2000);
- }
+   Serial.println("Objeto detectado");
+   digitalWrite(ledVerde, LOW);
+   digitalWrite(ledVermelho, HIGH);
+   digitalWrite(motorD, LOW);
+   digitalWrite(motorE, LOW);
+   delay(5000);
+   digitalWrite(motorD, HIGH);
+   digitalWrite(motorE, LOW);
+   delay(2000);
+   }
 }
