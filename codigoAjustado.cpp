@@ -68,8 +68,8 @@ if (distancia>5){
  }
 } 
 else {
-    Serial.println("Objeto detectado");
-  	 digitalWrite(motorD, LOW);
+    digitalWrite(motorD, LOW);
     digitalWrite(motorE, LOW);
+    Serial.println("Objeto detectado");
  }
 }
