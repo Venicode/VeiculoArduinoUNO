@@ -85,14 +85,14 @@ if (distancia>5){
 /*O if acima verifica se a distância é superior a 5cm. 
 Caso for igual ou inferior, irá executar o comando do else*/
 else {
-  	Serial.println("Objeto detectado");
-  	digitalWrite(ledVerde, LOW);
-  	digitalWrite(ledVermelho, HIGH);
-     digitalWrite(motorD, LOW);
-     digitalWrite(motorE, LOW);
-  	delay(5000);
-  	digitalWrite(motorD, HIGH);
-  	digitalWrite(motorE, LOW);
-  	delay(2000);
+   	Serial.println("Objeto detectado");
+   	digitalWrite(ledVerde, LOW);
+   	digitalWrite(ledVermelho, HIGH);
+    digitalWrite(motorD, LOW);
+    digitalWrite(motorE, LOW);
+   	delay(5000);
+   	digitalWrite(motorD, HIGH);
+   	digitalWrite(motorE, LOW);
+   	delay(2000);
  }
 }
