@@ -1,12 +1,17 @@
 //Declaração de variáveis de acordo com as portas que estão conectadas
-const float trigger = 12;
-const float echo = 11;
-const int motorD =  5;
-const int motorE = 6;
-const int Sensor1 = A0;
-const int Sensor2 = A1;
-const int ledVerde = 13;
-const int ledVermelho = 10;
+#define trigger 12
+#define echo 11
+
+#define MotorD 5
+#define MotorE 6
+#define dirD 7
+#define dirE 8
+
+#define Sensor1 A0
+#define Sensor2 A1
+
+#define ledVerde 13
+#define ledVermelho 10
 
 /*Declarando as variaveis que irão armazenar valores 
 de acordo com a leitura dos sensores */
