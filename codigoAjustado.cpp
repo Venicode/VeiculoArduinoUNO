@@ -19,6 +19,7 @@ int valorSensor1 = 0;
 int valorSensor2 = 0;
 int duracao = 0;
 int distancia = 0;
+int velocidade = 150;
 
 //Configurações iniciais
 //O input significa que o valor será obtido a partir da leitura, usado para os sensores.
@@ -30,14 +31,21 @@ void setup() {
   
  pinMode(motorD, OUTPUT);
  pinMode(motorE, OUTPUT);
+
+ pinMode(dirD, OUTPUT);
+ pinMode(dirE, OUTPUT);
  
  pinMode(Sensor1, INPUT);
  pinMode(Sensor2, INPUT);
   
  pinMode(trigger, OUTPUT);
  pinMode(echo, INPUT);
-  
- Serial.begin(9600); //é usado para definir uma frequencia dos dados expostos no print (9600).
+
+ //Configuramos as direções dos motores como 0 ou LOW, para o carrinho seguir para frente inicialmente
+ digitalWrite(dirD, HIGH);
+ digitalWrite(dirE, HIGH);
+ //é usado para definir uma frequencia dos dados expostos no print (9600).
+ Serial.begin(9600); 
 }
 
 void loop() {
@@ -68,24 +76,20 @@ if (distancia>5){
    digitalWrite(ledVermelho, LOW);
   
  if ((valorSensor1 > 900) && (valorSensor2 > 900)){
-     digitalWrite(motorD, HIGH);
-     digitalWrite(motorE, HIGH);
+     digitalWrite(motorD, velocidade);
+     digitalWrite(motorE, velocidade);
  }
  
- else if ((valorSensor1 < 900) && (valorSensor2 > 900)){
-     digitalWrite(motorD, LOW);
-     digitalWrite(motorE, HIGH);
+ if ((valorSensor1 < 900) && (valorSensor2 > 900)){
+     digitalWrite(motorD, 0);
+     digitalWrite(motorE, velocidade);
  }
  
- else if ((valorSensor1 > 900) && (valorSensor2 < 900)){
-     digitalWrite(motorD, HIGH);
-     digitalWrite(motorE, LOW);
+ if ((valorSensor1 > 900) && (valorSensor2 < 900)){
+     digitalWrite(motorD, velocidade);
+     digitalWrite(motorE, 0);
  }
-  	
- else {
-     digitalWrite(motorD, LOW);
-     digitalWrite(motorE, LOW);
- }
+    
 }
 /*O if acima verifica se a distância é superior a 5cm. 
 Caso for igual ou inferior, irá executar o comando do else*/
@@ -93,11 +97,11 @@ else {
    Serial.println("Objeto detectado");
    digitalWrite(ledVerde, LOW);
    digitalWrite(ledVermelho, HIGH);
-   digitalWrite(motorD, LOW);
-   digitalWrite(motorE, LOW);
+   digitalWrite(motorD, 0);
+   digitalWrite(motorE, 0);
    delay(5000);
-   digitalWrite(motorD, HIGH);
-   digitalWrite(motorE, LOW);
+   digitalWrite(motorD, velocidade);
+   digitalWrite(motorE, 0);
    delay(2000);
    }
 }
