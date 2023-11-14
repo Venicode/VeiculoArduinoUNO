@@ -2,8 +2,8 @@
 #define trigger 12
 #define echo 11
 
-#define MotorD 5
-#define MotorE 6
+#define motorD 5
+#define motorE 6
 #define dirD 7
 #define dirE 8
 
