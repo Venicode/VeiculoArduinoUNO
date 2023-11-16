@@ -42,8 +42,8 @@ void setup() {
  pinMode(echo, INPUT);
 
  //Configuramos as direções dos motores como 0 ou LOW, para o carrinho seguir para frente inicialmente
- digitalWrite(dirD, HIGH);
- digitalWrite(dirE, HIGH);
+ digitalWrite(dirD, LOW);
+ digitalWrite(dirE, LOW);
  //é usado para definir uma frequencia dos dados expostos no print (9600).
  Serial.begin(9600); 
 }
