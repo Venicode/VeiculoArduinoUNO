@@ -4,8 +4,8 @@
 
 #define motorD 5
 #define motorE 6
-#define dirD 7
-#define dirE 8
+
+#define aceleracao 3
 
 #define Sensor1 A0
 #define Sensor2 A1
@@ -19,7 +19,7 @@ int valorSensor1 = 0;
 int valorSensor2 = 0;
 int duracao = 0;
 int distancia = 0;
-int velocidade = 150;
+int velocidade = 200;
 
 //Configurações iniciais
 //O input significa que o valor será obtido a partir da leitura, usado para os sensores.
@@ -32,8 +32,7 @@ void setup() {
  pinMode(motorD, OUTPUT);
  pinMode(motorE, OUTPUT);
 
- pinMode(dirD, OUTPUT);
- pinMode(dirE, OUTPUT);
+ pinMode(aceleracao, OUTPUT);
  
  pinMode(Sensor1, INPUT);
  pinMode(Sensor2, INPUT);
@@ -41,9 +40,6 @@ void setup() {
  pinMode(trigger, OUTPUT);
  pinMode(echo, INPUT);
 
- //Configuramos as direções dos motores como 0 ou LOW, para o carrinho seguir para frente inicialmente
- digitalWrite(dirD, LOW);
- digitalWrite(dirE, LOW);
  //é usado para definir uma frequencia dos dados expostos no print (9600).
  Serial.begin(9600); 
 }
@@ -74,6 +70,7 @@ Se for branco, retorna menos de 900. Se for preto, retorna superior. */
 if (distancia>5){ 
    digitalWrite(ledVerde,HIGH);
    digitalWrite(ledVermelho, LOW);
+   digitalWrite(aceleracao,HIGH);
   
  if ((valorSensor1 > 900) && (valorSensor2 > 900)){
      digitalWrite(motorD, velocidade);
@@ -97,11 +94,11 @@ else {
    Serial.println("Objeto detectado");
    digitalWrite(ledVerde, LOW);
    digitalWrite(ledVermelho, HIGH);
-   digitalWrite(motorD, 0);
-   digitalWrite(motorE, 0);
-   delay(5000);
+   digitalWrite(aceleracao,LOW);
+   delay(2000);
    digitalWrite(motorD, velocidade);
    digitalWrite(motorE, 0);
+   digitalWrite(aceleracao,HIGH);
    delay(2000);
    }
 }
