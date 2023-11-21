@@ -1,17 +1,18 @@
 //Declaração de variáveis de acordo com as portas que estão conectadas
-#define trigger 12
-#define echo 11
+#define trigger 8
+#define echo 9
 
-#define motorD 5
-#define motorE 6
+#define motorD 6
+#define motorE 5
 
-#define aceleracao 3
+#define Sensor1 A1
+#define Sensor2 A2
 
-#define Sensor1 A0
-#define Sensor2 A1
+#define ledVerde 1
+#define ledVermelho 11
 
-#define ledVerde 13
-#define ledVermelho 10
+//Porta para acelerar os motores
+int acelerar = 3;
 
 /*Declarando as variaveis que irão armazenar valores 
 de acordo com a leitura dos sensores */
@@ -19,7 +20,7 @@ int valorSensor1 = 0;
 int valorSensor2 = 0;
 int duracao = 0;
 int distancia = 0;
-int velocidade = 200;
+int velocidade = 150;
 
 //Configurações iniciais
 //O input significa que o valor será obtido a partir da leitura, usado para os sensores.
@@ -31,8 +32,8 @@ void setup() {
   
  pinMode(motorD, OUTPUT);
  pinMode(motorE, OUTPUT);
-
- pinMode(aceleracao, OUTPUT);
+  
+ pinMode(acelerar, OUTPUT);
  
  pinMode(Sensor1, INPUT);
  pinMode(Sensor2, INPUT);
@@ -70,35 +71,36 @@ Se for branco, retorna menos de 900. Se for preto, retorna superior. */
 if (distancia>5){ 
    digitalWrite(ledVerde,HIGH);
    digitalWrite(ledVermelho, LOW);
-   digitalWrite(aceleracao,HIGH);
+   digitalWrite(acelerar, HIGH);
+  
   
  if ((valorSensor1 > 900) && (valorSensor2 > 900)){
-     digitalWrite(motorD, velocidade);
-     digitalWrite(motorE, velocidade);
+     analogWrite(motorD, velocidade);
+     analogWrite(motorE, velocidade);
+   	
  }
  
  if ((valorSensor1 < 900) && (valorSensor2 > 900)){
-     digitalWrite(motorD, 0);
-     digitalWrite(motorE, velocidade);
+     analogWrite(motorD, 0);
+     analogWrite(motorE, velocidade);
  }
  
  if ((valorSensor1 > 900) && (valorSensor2 < 900)){
-     digitalWrite(motorD, velocidade);
-     digitalWrite(motorE, 0);
+     analogWrite(motorD, velocidade);
+     analogWrite(motorE, 0);
  }
     
-}
-/*O if acima verifica se a distância é superior a 5cm. 
-Caso for igual ou inferior, irá executar o comando do else*/
 else {
-   Serial.println("Objeto detectado");
-   digitalWrite(ledVerde, LOW);
-   digitalWrite(ledVermelho, HIGH);
-   digitalWrite(aceleracao,LOW);
-   delay(2000);
-   digitalWrite(motorD, velocidade);
-   digitalWrite(motorE, 0);
-   digitalWrite(aceleracao,HIGH);
-   delay(2000);
-   }
+     analogWrite(motorD, 0);
+     analogWrite(motorE, 0);
+ }
+} 
+else {
+  	Serial.println("Objeto detectado");
+  	digitalWrite(ledVerde, LOW);
+  	digitalWrite(ledVermelho, HIGH);
+  	digitalWrite(acelerar, LOW);
+    analogWrite(motorD, 0);
+    analogWrite(motorE, 0);
+ }
 }
