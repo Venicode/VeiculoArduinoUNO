@@ -46,6 +46,11 @@ void setup() {
 }
 
 void loop() {
+
+  digitalWrite(acelerar, HIGH);
+  analogWrite(motorD, velocidade);
+  analogWrite(motorE, velocidade);
+
   //Leitura dos valores dos sensores infravermelhos
   valorSensor1 = analogRead(Sensor1);
   valorSensor2 = analogRead(Sensor2);
@@ -71,8 +76,6 @@ Se for branco, retorna menos de 900. Se for preto, retorna superior. */
 if (distancia>5){ 
    digitalWrite(ledVerde,HIGH);
    digitalWrite(ledVermelho, LOW);
-   digitalWrite(acelerar, HIGH);
-  
   
  if ((valorSensor1 > 900) && (valorSensor2 > 900)){
      analogWrite(motorD, velocidade);
@@ -87,11 +90,6 @@ if (distancia>5){
  
  if ((valorSensor1 > 900) && (valorSensor2 < 900)){
      analogWrite(motorD, velocidade);
-     analogWrite(motorE, 0);
- }
-    
-else {
-     analogWrite(motorD, 0);
      analogWrite(motorE, 0);
  }
 } 
