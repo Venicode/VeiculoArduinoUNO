@@ -1,8 +1,8 @@
 /* Inclui a Biblioteca AFMotor.h */
 #include <AFMotor.h> 
 //Declaração de variáveis de acordo com as portas que estão conectadas
-#define trigger 12
-#define echo 11
+#define trigger 8
+#define echo 9
 
 /* Define Motor_Esquerda como posição 2 de controle para motor */
 AF_DCMotor Motor_Direita(6); 
