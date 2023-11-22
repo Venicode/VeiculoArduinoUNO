@@ -49,10 +49,6 @@ void setup() {
 
 void loop() {
 
-  digitalWrite(acelerar, HIGH);
-  analogWrite(motorD, velocidade);
-  analogWrite(motorE, velocidade);
-
   //Leitura dos valores dos sensores infravermelhos
   valorSensor1 = analogRead(Sensor1);
   valorSensor2 = analogRead(Sensor2);
