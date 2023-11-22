@@ -75,7 +75,15 @@ void loop() {
 
   /*Os sensores infravermelhos retornam valores dependendo da luz refletida.
   Se for branco, retorna menos de 900. Se for preto, retorna superior. */
-  if (distancia>5){ 
+  if (distancia<=5){ 
+      Serial.println("Objeto detectado");
+      digitalWrite(ledVerde, LOW);
+      digitalWrite(ledVermelho, HIGH);
+      /* Robô permanece parado */
+      Motor_Direita.run(RELEASE);
+      Motor_Esquerda.run(RELEASE); 
+  } 
+  else {
     digitalWrite(ledVerde,HIGH);
     digitalWrite(ledVermelho, LOW);
     
@@ -110,15 +118,5 @@ void loop() {
           Motor_Direita.run(RELEASE);
           Motor_Esquerda.run(RELEASE); 
       } 
-  } 
-  else {
-      Serial.println("Objeto detectado");
-      digitalWrite(ledVerde, LOW);
-      digitalWrite(ledVermelho, HIGH);
-      /* Robô permanece parado */
-      Motor_Direita.run(RELEASE);
-      Motor_Esquerda.run(RELEASE); 
-
     } 
   }
-}
